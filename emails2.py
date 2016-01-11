@@ -47,12 +47,12 @@ prospects = prospects[cols]
 import requests
 import json
 
-api_key = '6ebf3972918d5629'
+api_key = 'xxx'
 url = "https://api.fullcontact.com/v2/person.json"
 
 def whois(**kwargs):
-    if '6ebf3972918d5629' not in kwargs:
-        kwargs['6ebf3972918d562'] = api_key
+    if 'xxx' not in kwargs:
+        kwargs['xxx'] = api_key
     r = requests.get(url, params=kwargs)
     return json.loads(r.text)
 
@@ -64,7 +64,7 @@ for i in range(0, len(orange) - 1):
     email = orange[i]
     parameters = {
         'email': email,
-        'apiKey': '6ebf3972918d5629'
+        'apiKey': 'xxx'
     }
     response = requests.get('https://api.fullcontact.com/v2/person.json', parameters)
     data = json.loads(response.text)
