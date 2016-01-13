@@ -40,7 +40,8 @@ cols = ['Company',
        'Country', 
        'Phone', 
         'Website', 
-        'Hook', 'Email Type']
+        'Hook', 
+        'Email Type']
 prospects = prospects[cols]
 
 #Export file 
