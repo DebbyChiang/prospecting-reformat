@@ -31,16 +31,17 @@ cols = ['Company',
         'Industry', 
         'Email', 
         'Test Email 1', 
-       'Rating', 
-       'Notes', 
-       'Address', 
-       'City', 
-       'State', 
-       'Postal Code', 
-       'Country', 
-       'Phone', 
+        'Rating', 
+        'Notes', 
+        'Address', 
+        'City', 
+        'State', 
+        'Postal Code', 
+        'Country', 
+        'Phone', 
         'Website', 
-        'Hook', 'Email Type']
+        'Hook', 
+        'Email Type']
 prospects = prospects[cols]
 
 #Set Up Full Contact API
