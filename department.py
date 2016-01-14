@@ -1,14 +1,18 @@
+#Code can be shortened by using more string operations
+
 #import libraries
 import pandas as pd
 import numpy as np
 
 #import csv file
-prospects = pd.DataFrame(pd.read_csv("/Users/open/Desktop/reformatted.csv"))
+prospects = pd.DataFrame(pd.read_csv("/Users/open/Desktop/sf1reformatted.csv"))
 
 #IT keywords --> fill corresponding Department column/row w/"IT"
 #Keyword: CTO
-prospects['IT'] = prospects['Title'].str.contains("CTO")
-prospects['IT'] = prospects ['IT'] | prospects['Title'].str.contains("cto")
+prospects['IT'] = prospects['Title'].str.contains("CTO ")
+prospects['IT'] = prospects['Title'].str.contains(" CTO")
+prospects['IT'] = prospects ['IT'] | prospects['Title'].str.contains(" cto")
+prospects['IT'] = prospects ['IT'] | prospects['Title'].str.contains("cto ")
 
 #Keyword: Technology
 prospects['IT'] = prospects ['IT'] | prospects['Title'].str.contains("Technology")
@@ -20,6 +24,11 @@ prospects['IT'] = prospects['IT'] | prospects['Title'].str.contains("IT")
 prospects['IT'] = prospects['IT'] | prospects['Title'].str.contains(" IT")
 prospects['IT'] = prospects['IT'] | prospects['Title'].str.contains("IT ")
 prospects['IT'] = prospects['IT'] | prospects['Title'].str.contains(" IT ")
+
+#Keyword: Solution
+prospects['IT'] = prospects ['IT'] | prospects['Title'].str.contains("Solution")
+prospects['IT'] = prospects ['IT'] | prospects['Title'].str.contains("SOLUTION")
+prospects['IT'] = prospects ['IT'] | prospects['Title'].str.contains("solution")
 
 #reference the positions where you want to change the value
 prospects.loc[prospects.IT >= 1, 'Department']  = "IT"
@@ -126,6 +135,12 @@ prospects['IT'] = prospects['IT'] |  prospects['Title'].str.contains("Tech")
 prospects['IT'] = prospects['IT'] |  prospects['Title'].str.contains("tech")
 prospects['IT'] = prospects['IT'] |  prospects['Title'].str.contains("TECH")
 
+#IT Department fill-in, df.loc[<row selection>, <column selection>]
+prospects.loc[prospects.IT >= 1, 'Department']  = "IT"
+
+#Human Resources keywords --> fill corresponding Department column/row w/"HR"
+#HR Keywords Check
+
 #Keyword: Operations Manager
 prospects['HR'] = prospects['HR'] |  prospects['Title'].str.contains("Operations Manager")
 prospects['HR'] = prospects['HR'] |  prospects['Title'].str.contains("operations manager")
@@ -136,12 +151,6 @@ prospects['HR'] = prospects['HR'] |  prospects['Title'].str.contains("Procuremen
 prospects['HR'] = prospects['HR'] |  prospects['Title'].str.contains("procurement")
 prospects['HR'] = prospects['HR'] |  prospects['Title'].str.contains("PROCUREMENT")
 
-#IT Department fill-in, df.loc[<row selection>, <column selection>]
-prospects.loc[prospects.IT >= 1, 'Department']  = "IT"
-
-#Human Resources keywords --> fill corresponding Department column/row w/"HR"
-#HR Keywords Check
-
 #Keyword: HR/hris
 prospects['HR'] = prospects['Title'].str.contains("HR")
 prospects['HR'] = prospects['HR'] |  prospects['Title'].str.contains("hr ")
@@ -150,23 +159,26 @@ prospects['HR'] = prospects['HR'] |  prospects['Title'].str.contains(" hr ")
 prospects['HR'] = prospects['HR'] |  prospects['Title'].str.contains("hris")
 
 #Keyword: Hiring
-prospects['HR'] = prospects['HR'] |  prospects['Title'].str.contains("Hiring")
-prospects['HR'] = prospects['HR'] |  prospects['Title'].str.contains("hiring")
-prospects['HR'] = prospects['HR'] |  prospects['Title'].str.contains("hiring ")
-prospects['HR'] = prospects['HR'] |  prospects['Title'].str.contains("Hiring ")
-prospects['HR'] = prospects['HR'] |  prospects['Title'].str.contains(" hiring ")
-prospects['HR'] = prospects['HR'] |  prospects['Title'].str.contains(" Hiring")
-prospects['HR'] = prospects['HR'] |  prospects['Title'].str.contains("HIRING")
-prospects['HR'] = prospects['HR'] |  prospects['Title'].str.contains("HIRING ")
-prospects['HR'] = prospects['HR'] |  prospects['Title'].str.contains(" HIRING")
-prospects['HR'] = prospects['HR'] |  prospects['Title'].str.contains(" HIRING ")
+prospects['HR'] = prospects['HR'] | prospects['Title'].str.contains("Hiring")
+prospects['HR'] = prospects['HR'] | prospects['Title'].str.contains("hiring")
+prospects['HR'] = prospects['HR'] | prospects['Title'].str.contains("hiring ")
+prospects['HR'] = prospects['HR'] | prospects['Title'].str.contains("Hiring ")
+prospects['HR'] = prospects['HR'] | prospects['Title'].str.contains(" hiring ")
+prospects['HR'] = prospects['HR'] | prospects['Title'].str.contains(" Hiring")
+prospects['HR'] = prospects['HR'] | prospects['Title'].str.contains("HIRING")
+prospects['HR'] = prospects['HR'] | prospects['Title'].str.contains("HIRING ")
+prospects['HR'] = prospects['HR'] | prospects['Title'].str.contains(" HIRING")
+prospects['HR'] = prospects['HR'] | prospects['Title'].str.contains(" HIRING ")
 
-
+#Keyword: Career
+prospects['HR'] = prospects['HR'] | prospects['Title'].str.contains("Career ")
+prospects['HR'] = prospects['HR'] | prospects['Title'].str.contains("career")
+prospects['HR'] = prospects['HR'] | prospects['Title'].str.contains("CAREER")
 
 #Keyword: Human
-prospects['HR'] = prospects['HR']|  prospects['Title'].str.contains("Human ")
-prospects['HR'] = prospects['HR'] |  prospects['Title'].str.contains("human")
-prospects['HR'] = prospects['HR'] |  prospects['Title'].str.contains("HUMAN")
+prospects['HR'] = prospects['HR'] | prospects['Title'].str.contains("Human ")
+prospects['HR'] = prospects['HR'] | prospects['Title'].str.contains("human")
+prospects['HR'] = prospects['HR'] | prospects['Title'].str.contains("HUMAN")
 
 
 #Keyword: Office
@@ -281,7 +293,7 @@ prospects.loc[prospects.HR >= 1, 'Department']  = "HR"
 prospects['Department'] = prospects.Department.fillna("Executives")
 
 #Drop unneeded columns
-#prospects = prospects.drop(['Unnamed: 0', 'IT', 'HR' ], axis = 1)
+prospects = prospects.drop(['Unnamed: 0', 'IT', 'HR' ], axis = 1)
 
 #Export file 
-prospects.to_csv('/Users/open/Desktop/department.csv')
+prospects.to_csv('/Users/open/Desktop/sf1department.csv')
