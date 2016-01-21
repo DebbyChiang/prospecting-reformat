@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 
 #import csv file
-prospects = pd.DataFrame(pd.read_csv("/Users/open/Desktop/sf1reformatted.csv"))
+prospects = pd.DataFrame(pd.read_csv("/Users/open/Desktop/reformatted.csv"))
 
 #IT keywords --> fill corresponding Department column/row w/"IT"
 #Keyword: CTO
