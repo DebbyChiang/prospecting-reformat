@@ -42,9 +42,10 @@ cols = ['Company',
         'Website', 
         'Hook', 
         'Email Type']
+
 prospects = prospects[cols]
 
-#Set Up Full Contact API
+#Set up Full Contact API
 import requests
 import json
 
@@ -57,11 +58,12 @@ def whois(**kwargs):
     r = requests.get(url, params=kwargs)
     return json.loads(r.text)
 
-#define orange email
-orange = list(prospects.loc[prospects['Email Type'] == "orange", 'Test Email 1'] )
+#Prepare emails for testing
+orange = list(prospects['Test Email 1'])
+green = list(prospects['Email'])
 
-#check orange email list
-for i in range(0, len(orange) - 1):
+#Test emails
+for i in range(0, len(orange)):
     email = orange[i]
     parameters = {
         'email': email,
@@ -69,11 +71,17 @@ for i in range(0, len(orange) - 1):
     }
     response = requests.get('https://api.fullcontact.com/v2/person.json', parameters)
     data = json.loads(response.text)
-    #Use this data to move the right orange emails in Test Email 1 back into the Email column.
-        #if data['status'] == "200":
-            #some code moving orange emails in the Test email column to the Email Column 
+    if data['status'] == 200:
+        green[i] = orange[i]
+        orange[i] = "" 
 
-
+#Replace emails
+prospects['Email'] = green
+prospects['Test Email 1'] = orange
 
 #Export file 
 prospects.to_csv('/Users/open/Desktop/emails.csv')
+
+
+
+
