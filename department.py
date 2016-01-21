@@ -296,4 +296,4 @@ prospects['Department'] = prospects.Department.fillna("Executives")
 prospects = prospects.drop(['Unnamed: 0', 'IT', 'HR' ], axis = 1)
 
 #Export file 
-prospects.to_csv('/Users/open/Desktop/sf1department.csv')
+prospects.to_csv('/Users/open/Desktop/department.csv')
