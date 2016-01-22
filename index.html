@@ -31,12 +31,32 @@
         <h1>
 <a id="the-problem" class="anchor" href="#the-problem" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Problem</h1>
 
-<p>At Revivn, I was tasked with cleaning thousands of rows of prospecting data gathered by the Salesloft Google Extension.</p>
+<p>At Revivn, I was tasked with cleaning thousands of rows of prospecting data thatgathered by me and previous interns using the Salesloft Google Extension.</p>
+
+<p>I specifically wanted to address the following manual processes:</p>
+
+<ul>
+<li>Reformatting the data to fit Revivn's preferences for easily keeping track of prospects and initiating email campaigns</li>
+<li>Categorizing prospects by Department as IT, Executives, or HR</li>
+<li>Verifying unconfirmed emails as working</li>
+</ul>
 
 <h1>
 <a id="the-solution" class="anchor" href="#the-solution" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Solution</h1>
 
-<p>Scripts to automate data cleaning</p>
+<p>I split the scripting project into 3 separate files addressing each of the problems specified above. The script, reformat.py, changed the order of the columns of data. The script, department.py, categorized each prospect by Department based on the prospect's job title. The script, emails.py, utilized the FullContact API to verify emails.</p>
+
+<p>Towards the end of my internship, I converted Revivn to LeadFuze for prospecting. LeadFuze gathers and exports information slightly differently than Salesloft, so I modified the scripts as needed to process verified prospects, unverified prospects, and prospects missing emails.</p>
+
+<h1>
+<a id="room-for-improvement" class="anchor" href="#room-for-improvement" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Room for Improvement</h1>
+
+<ul>
+<li>Making the code more concise </li>
+<li>Filling in the Email Type column for the green and orange email files</li>
+<li>Writing code to automatically fill in missing emails based on data already gathered</li>
+<li>Merging the data from 3 separate files into 1 file</li>
+</ul>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/DebbyChiang">DebbyChiang</a></p>
